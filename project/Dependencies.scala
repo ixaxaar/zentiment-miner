@@ -19,6 +19,10 @@ object Dependencies {
     val sparkML           = "org.apache.spark"    %% "spark-mllib"                        % Spark
     val deepLearning4j    = "org.deeplearning4j"  % "deeplearning4j-core"                 % DeepLearning4j
     val twitter4j         = "org.twitter4j"       % "twitter4j"                           % Twitter4j
+    val cassandraDriver   = "com.datastax.cassandra" % "cassandra-driver-core"            % CassandraDriver
+    val sparkCassandra    = "com.datastax.spark"  %% "spark-cassandra-connector"          % SparkCassandra
+    val sparkCassandraEmb = "com.datastax.spark"  %% "spark-cassandra-connector-embedded" % SparkCassandra
+    val twitterSpark      = "org.apache.spark"    % "spark-streaming-twitter_2.10"        % TwitterSpark
   }
 
   object Test {
@@ -35,7 +39,9 @@ object Dependencies {
 
   val logging = Seq(logback, slf4jApi)
 
-  val spark = Seq(sparkML) ++ logging ++ akka
+  val spark = Seq(sparkML, twitterSpark) ++ logging ++ akka
+
+  val cassandra = Seq(cassandraDriver, sparkCassandra) ++ spark
 
   val test = Seq(Test.akkaTestKit, Test.scalatest)
 
