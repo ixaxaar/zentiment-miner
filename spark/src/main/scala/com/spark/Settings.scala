@@ -8,4 +8,7 @@ final class Settings(conf: Option[Config] = None) extends Serializable {
 
   // hadoop config
   val sparkMaster = "local"
+
+  // spark streaming context granularity in milliseconds
+  val granularity = 1000
 }

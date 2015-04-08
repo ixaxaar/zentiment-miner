@@ -9,15 +9,11 @@ import scala.concurrent.duration._
 // import system.dispatcher
 
 
-abstract class SparkBatch(name:String) extends Actor with ActorLogging {
+abstract class SparkBatch(sc:SparkContext, sqlContext:SQLContext) extends Actor with ActorLogging {
   import Events._
   val settings = new Settings
   import settings._
 
-  // the spark context
-  val sparkConf = new SparkConf().setAppName(name).setMaster(sparkMaster)
-  val sc = new SparkContext(sparkConf)
-  val sqlContext = new org.apache.spark.sql.SQLContext(sc)
   import sqlContext._
 
   def receive:Actor.Receive = maintainState
@@ -28,6 +24,7 @@ abstract class SparkBatch(name:String) extends Actor with ActorLogging {
     case SparkBatchStart =>
       self ! SparkBatchRunning
     case SparkBatchStop =>
+      sc.stop
       self ! SparkBatchShuttingDown
     case SparkBatchDown =>
     case SparkBatchUninitialized =>
@@ -41,17 +38,4 @@ abstract class SparkBatch(name:String) extends Actor with ActorLogging {
   def batch(spk:SparkContext, sql:SQLContext):Unit
 }
 
-// object BatchRunner {
-//   def run(ref:ActorRef, period:Int, event:SparkBatchEvent):Cancellable = {
-//     val system = akka.actor.ActorSystem("system")
 
-//     val cancellable:Cancellable = system.scheduler().schedule(Duration.Zero(),
-//       Duration.create(50, TimeUnit.MILLISECONDS), ref, "Tick",
-//       system.dispatcher(), null)
-//     return cancellable
-//   }
-
-//   def stop(cancellable:Cancellable):Unit = {
-//     cancellable.cancel
-//   }
-// }
