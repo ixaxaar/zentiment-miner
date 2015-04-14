@@ -16,10 +16,10 @@ class TwitterDump(ssc:StreamingContext) extends SparkStreaming(ssc:StreamingCont
   println("// Starting Spark Streaming Server //")
   println("/////////////////////////////////////")
 
-  val consumerKey = "pJE7QBo3ugrorjCJQwYZGd4Gu"
-  val consumerSecret = "5x0IAkaBQpTK1KkOLBIEPm1jk7knZR4Z1I0nUjqCqcTT8EZWXU"
-  val accessToken = "331481500-bK4vy1jEm6u5MSduyXCNmXCpjypbMDPYbujed6I1"
-  val accessTokenSecret = "CmLrSHc46GrJVFpLzZINKYtEdLtNheyVUiM83r41RqJ8h"
+  val consumerKey = ""
+  val consumerSecret = ""
+  val accessToken = ""
+  val accessTokenSecret = ""
 
   System.setProperty("twitter4j.oauth.consumerKey", consumerKey)
   System.setProperty("twitter4j.oauth.consumerSecret", consumerSecret)
