@@ -4,7 +4,7 @@ import com.typesafe.config.{Config, ConfigFactory}
 
 
 final class Settings(conf: Option[Config] = None) extends Serializable {
-  val AppName = "akka-cluster-boilerplate"
+  val AppName = "zentiment-miner"
 
   // hadoop config
   val sparkMaster = "local"

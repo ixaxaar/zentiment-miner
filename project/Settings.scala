@@ -7,12 +7,12 @@ object Settings extends Build {
   import Versions._
 
   lazy val buildSettings = Seq(
-    name := "akka-cluster-boilerplate",
-    normalizedName := "akka-cluster-boilerplate",
+    name := "zentiment-miner",
+    normalizedName := "zentiment-miner",
     organization := "com.common",
-    organizationHomepage := Some(url("http://www.github.com/ixaxaar/akka-cluster-boilerplate")),
+    organizationHomepage := Some(url("http://www.github.com/ixaxaar/zentiment-miner")),
     scalaVersion := Versions.Scala,
-    homepage := Some(url("https://github.com/ixaxaar/akka-cluster-boilerplate"))
+    homepage := Some(url("https://github.com/ixaxaar/zentiment-miner"))
   )
 
   val parentSettings = buildSettings ++ Seq(
